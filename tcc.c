@@ -117,6 +117,7 @@ static const char help2[] =
     "  ms-extensions                 allow anonymous struct in struct\n"
     "  dollars-in-identifiers        allow '$' in C symbols\n"
     "  test-coverage                 create code coverage code\n"
+    "  function-tracing              insert function call tracing\n"
     "-m... target specific options:\n"
     "  ms-bitfields                  use MSVC bitfield layout\n"
 #ifdef TCC_TARGET_ARM

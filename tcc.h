@@ -112,6 +112,10 @@ extern long double strtold (const char *__nptr, char **__endptr);
 #define countof(tab) (sizeof(tab) / sizeof((tab)[0]))
 #endif
 
+#ifndef endof
+#define endof(tab) ((tab) + countof(tab))
+#endif
+
 #ifdef _MSC_VER
 # define NORETURN __declspec(noreturn)
 # define ALIGNED(x) __declspec(align(x))
@@ -807,6 +811,7 @@ struct TCCState {
     unsigned char do_bounds_check;
 #endif
     unsigned char test_coverage;  /* generate test coverage code */
+    unsigned char function_tracing;
 
     /* use GNU C extensions */
     unsigned char gnu_ext;

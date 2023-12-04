@@ -8315,6 +8315,18 @@ static void gen_function(Sym *sym)
     rsym = 0;
     clear_temp_local_var_list();
     func_vla_arg(sym);
+    if (tcc_state->function_tracing) {
+        static char source[] =
+            "{"
+            "extern int puts(const char *);"
+            "puts(__func__);"
+            "}";
+        TCCState *s = tcc_state;
+        tcc_open_bf(s, ":trace:", sizeof(source)-1);
+        memcpy(file->buffer, source, sizeof(source)-1);
+        if (s->include_stack_ptr < endof(s->include_stack))
+            *s->include_stack_ptr++ = file;
+    }
     block(0);
     gsym(rsym);
 
